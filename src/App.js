@@ -2,14 +2,14 @@ import './normalize.css'
 import './App.css'
 import { CardPreview } from './components/CardPreview'
 import { useEffect, useState } from 'react'
+import {getCards} from './services/cardService'
 
 function App() {
   const [cards, setCards] = useState([])
 
     useEffect(() => {
-      fetch('/api/card')
-      .then(res => res.json())
-      .then(setCards)
+      
+      getCards().then(setCards)
     }, [])
 
   return (
