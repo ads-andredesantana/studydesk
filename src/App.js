@@ -1,8 +1,17 @@
 import './normalize.css'
 import './App.css'
 import { CardPreview } from './components/CardPreview'
+import { useEffect, useState } from 'react'
 
 function App() {
+  const [cards, setCards] = useState([])
+
+    useEffect(() => {
+      fetch('https://lavish-diagnostic-workshop.glitch.me/api/card')
+      .then(res => res.json())
+      .then(setCards)
+    }, [])
+
   return (
     <div>
       <header>
@@ -14,9 +23,13 @@ function App() {
       <main>
         <h3>Your Cards</h3>
         <div className='gridContainer'>
-          <CardPreview definition="quack" term="What does a duck say?"/>
-          <CardPreview definition="woof" term="What does a dog say?"/>
-          <CardPreview definition="moo" term="What does a cow say?"/>
+          {cards.map(({id, definition, term}) => (
+            <CardPreview 
+              key={id} 
+              definition={definition} 
+              term={term}/>                    
+          ))}
+
         </div>
       </main>
     </div>
