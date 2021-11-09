@@ -1,5 +1,3 @@
 export function getCards() {
-  return fetch('/api/card')
-  .then(res => res.json())
-
+  return fetch('/api/card').then((res) => res.json())
 }
