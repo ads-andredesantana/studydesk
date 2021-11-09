@@ -12,6 +12,10 @@ function App() {
       getCards().then(setCards)
     }, [])
 
+    function handleRemove(id) {
+      setCards(existing => existing.filter(c => c.id !== id))
+    }
+
   return (
     <div>
       <header>
@@ -26,6 +30,8 @@ function App() {
           {cards.map(({id, definition, term}) => (
             <CardPreview 
               key={id} 
+              id ={id}
+              onRemove={handleRemove}
               definition={definition} 
               term={term}/>                    
           ))}
