@@ -7,7 +7,7 @@ function App() {
   const [cards, setCards] = useState([])
 
     useEffect(() => {
-      fetch('https://lavish-diagnostic-workshop.glitch.me/api/card')
+      fetch('/api/card')
       .then(res => res.json())
       .then(setCards)
     }, [])
